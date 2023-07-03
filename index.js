@@ -43,6 +43,31 @@ class LinkedList {
     }
     this.size++;
   }
+  insertValueAtIndex(value,index) {
+    if(index<= 0 ) {
+      return "index is not present!";
+    }
+    const node = new Node(value);
+    if(index === 0) {
+      node.next = this.head;
+      this.head = node;
+      this.size++;
+    }else {
+      let count = 0;
+      let prev = this.head;
+      while(prev && prev.next && count < index-1) {
+        prev = prev.next;
+        count++;
+      }
+      if(prev.next) {
+        node.next = prev.next;
+        prev.next = node;
+        this.size++;
+        return node;
+      }
+      return "index not found";
+    }
+  }
   getValue() {
     let curr = this.head;
     while (curr) {
@@ -72,3 +97,15 @@ addNodeAtLast.appendNodeLast(20);
 addNodeAtLast.appendNodeLast(30);
 addNodeAtLast.getValue()
 console.log("What is Size? ", addNodeAtLast.getSize());
+
+// Insert A Node at a given index in the List :-
+const insertNodeAtIndex = new LinkedList();
+console.log("insert 25 at 2 index");
+insertNodeAtIndex.appendNodeLast(10);
+insertNodeAtIndex.appendNodeLast(20);
+insertNodeAtIndex.appendNodeLast(30);
+insertNodeAtIndex.appendNodeLast(40);
+console.log(insertNodeAtIndex.insertValueAtIndex(25,2));
+insertNodeAtIndex.getValue();
+console.log("size of insertNodeAtIndex ",insertNodeAtIndex.getSize())
+
