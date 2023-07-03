@@ -41,7 +41,6 @@ class LinkedList {
 }
 
 // create a New List and pass the values and test
-
 const list = new LinkedList();
 console.log("is Empty? ", list.isEmpty());
 console.log("What is Size? ", list.getSize());
