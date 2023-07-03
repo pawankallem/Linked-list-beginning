@@ -13,19 +13,19 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null,
-    this.size = 0
+      this.size = 0
   }
   isEmpty() {
-    if(this.size === 0) return true;
+    if (this.size === 0) return true;
   }
   getSize() {
     return this.size;
   }
   insertNode(value) {
     const node = new Node(value);
-    if(!this.head) {
+    if (!this.head) {
       this.head = node;
-    }else {
+    } else {
       node.next = this.head;
       this.head = node;
     }
@@ -33,8 +33,8 @@ class LinkedList {
   }
   getValue() {
     let curr = this.head;
-    while(curr) {
-      console.log("values : ",curr.value);
+    while (curr) {
+      console.log("values : ", curr.value);
       curr = curr.next;
     }
   }
@@ -43,10 +43,10 @@ class LinkedList {
 // create a New List and pass the values and test
 
 const list = new LinkedList();
-console.log("is Empty? ",list.isEmpty());
-console.log("What is Size? ",list.getSize());
+console.log("is Empty? ", list.isEmpty());
+console.log("What is Size? ", list.getSize());
 list.insertNode(10);
 list.insertNode(20);
 list.insertNode(30);
 list.getValue()
-console.log("What is Size? ",list.getSize());
+console.log("What is Size? ", list.getSize());
