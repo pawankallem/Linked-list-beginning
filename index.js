@@ -68,6 +68,27 @@ class LinkedList {
       return "index not found";
     }
   }
+  removeNodeFromGivenIndex(index) {
+    if(index<0) return "index less than 0";
+    if(index == 0) {
+      if(this.head) {
+        this.head = this.head.next;
+        this.size--;
+      return "null";
+      }
+      else return 'head is null';
+    }else {
+      let prev = this.head;
+      for(let i = 0; i< index-1; i++) {
+        if(!prev.next) return '404 not found!'
+        prev= prev.next;
+      }
+      let rmNode = prev.next;
+      prev.next = rmNode.next
+      this.size--;
+      return rmNode;
+    }
+  }
   getValue() {
     let curr = this.head;
     while (curr) {
@@ -106,6 +127,14 @@ insertNodeAtIndex.appendNodeLast(20);
 insertNodeAtIndex.appendNodeLast(30);
 insertNodeAtIndex.appendNodeLast(40);
 console.log(insertNodeAtIndex.insertValueAtIndex(25,2));
+insertNodeAtIndex.getValue();
+console.log("size of insertNodeAtIndex ",insertNodeAtIndex.getSize())
+
+// Remove A Node at a given Index in the list :-
+console.log(insertNodeAtIndex.removeNodeFromGivenIndex(-1));
+console.log(insertNodeAtIndex.removeNodeFromGivenIndex(0));
+console.log(insertNodeAtIndex.removeNodeFromGivenIndex(7));
+console.log(insertNodeAtIndex.removeNodeFromGivenIndex(1));
 insertNodeAtIndex.getValue();
 console.log("size of insertNodeAtIndex ",insertNodeAtIndex.getSize())
 
