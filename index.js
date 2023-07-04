@@ -89,6 +89,18 @@ class LinkedList {
       return rmNode;
     }
   }
+  reverse() {
+    if(!this.head) return null;
+    let prev = null;
+    let curr = this.head;
+    while(curr) {
+      const next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+    this.head = prev;
+  }
   getValue() {
     let curr = this.head;
     while (curr) {
@@ -126,6 +138,8 @@ insertNodeAtIndex.appendNodeLast(10);
 insertNodeAtIndex.appendNodeLast(20);
 insertNodeAtIndex.appendNodeLast(30);
 insertNodeAtIndex.appendNodeLast(40);
+insertNodeAtIndex.appendNodeLast(50);
+insertNodeAtIndex.appendNodeLast(60);
 console.log(insertNodeAtIndex.insertValueAtIndex(25,2));
 insertNodeAtIndex.getValue();
 console.log("size of insertNodeAtIndex ",insertNodeAtIndex.getSize())
@@ -136,5 +150,7 @@ console.log(insertNodeAtIndex.removeNodeFromGivenIndex(0));
 console.log(insertNodeAtIndex.removeNodeFromGivenIndex(7));
 console.log(insertNodeAtIndex.removeNodeFromGivenIndex(1));
 insertNodeAtIndex.getValue();
-console.log("size of insertNodeAtIndex ",insertNodeAtIndex.getSize())
-
+console.log("reversing")
+// reverse
+insertNodeAtIndex.reverse();
+insertNodeAtIndex.getValue()
