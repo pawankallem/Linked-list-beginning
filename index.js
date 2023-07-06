@@ -31,35 +31,40 @@ class LinkedList {
     }
     this.size++;
   }
+  removeNodeFromFront() {
+    let nextNode = this.head.next;
+    this.head = nextNode;
+    return nextNode.value;
+  }
   appendNodeLast(value) {
     const node = new Node(value);
-    if(!this.head) this.head = node;
+    if (!this.head) this.head = node;
     else {
       let prev = this.head;
-      while(prev.next) {
+      while (prev.next) {
         prev = prev.next;
       }
       prev.next = node;
     }
     this.size++;
   }
-  insertValueAtIndex(value,index) {
-    if(index<= 0 ) {
+  insertValueAtIndex(value, index) {
+    if (index <= 0) {
       return "index is not present!";
     }
     const node = new Node(value);
-    if(index === 0) {
+    if (index === 0) {
       node.next = this.head;
       this.head = node;
       this.size++;
-    }else {
+    } else {
       let count = 0;
       let prev = this.head;
-      while(prev && prev.next && count < index-1) {
+      while (prev && prev.next && count < index - 1) {
         prev = prev.next;
         count++;
       }
-      if(prev.next) {
+      if (prev.next) {
         node.next = prev.next;
         prev.next = node;
         this.size++;
@@ -69,19 +74,19 @@ class LinkedList {
     }
   }
   removeNodeFromGivenIndex(index) {
-    if(index<0) return "index less than 0";
-    if(index == 0) {
-      if(this.head) {
+    if (index < 0) return "index less than 0";
+    if (index == 0) {
+      if (this.head) {
         this.head = this.head.next;
         this.size--;
-      return "null";
+        return "null";
       }
       else return 'head is null';
-    }else {
+    } else {
       let prev = this.head;
-      for(let i = 0; i< index-1; i++) {
-        if(!prev.next) return '404 not found!'
-        prev= prev.next;
+      for (let i = 0; i < index - 1; i++) {
+        if (!prev.next) return '404 not found!'
+        prev = prev.next;
       }
       let rmNode = prev.next;
       prev.next = rmNode.next
@@ -90,10 +95,10 @@ class LinkedList {
     }
   }
   reverse() {
-    if(!this.head) return null;
+    if (!this.head) return null;
     let prev = null;
     let curr = this.head;
-    while(curr) {
+    while (curr) {
       const next = curr.next;
       curr.next = prev;
       prev = curr;
@@ -111,46 +116,48 @@ class LinkedList {
 }
 
 // create a New List and pass the values and test
-const list = new LinkedList();
-console.log("is Empty? ", list.isEmpty());
-console.log("What is Size? ", list.getSize());
+// const list = new LinkedList();
+// console.log("is Empty? ", list.isEmpty());
+// console.log("What is Size? ", list.getSize());
 
 // Insert Node at Beginning :-
-const insertNodeBeginning = new LinkedList();
-insertNodeBeginning.insertNode(10);
-insertNodeBeginning.insertNode(20);
-insertNodeBeginning.insertNode(30);
-insertNodeBeginning.getValue()
-console.log("What is Size? ", insertNodeBeginning.getSize());
+// const insertNodeBeginning = new LinkedList();
+// insertNodeBeginning.insertNode(10);
+// insertNodeBeginning.insertNode(20);
+// insertNodeBeginning.insertNode(30);
+// insertNodeBeginning.getValue()
+// console.log("What is Size? ", insertNodeBeginning.getSize());
 
 // Append Node at Last :-
-const addNodeAtLast = new LinkedList();
-addNodeAtLast.appendNodeLast(10);
-addNodeAtLast.appendNodeLast(20);
-addNodeAtLast.appendNodeLast(30);
-addNodeAtLast.getValue()
-console.log("What is Size? ", addNodeAtLast.getSize());
+// const addNodeAtLast = new LinkedList();
+// addNodeAtLast.appendNodeLast(10);
+// addNodeAtLast.appendNodeLast(20);
+// addNodeAtLast.appendNodeLast(30);
+// addNodeAtLast.getValue()
+// console.log("What is Size? ", addNodeAtLast.getSize());
 
 // Insert A Node at a given index in the List :-
-const insertNodeAtIndex = new LinkedList();
-console.log("insert 25 at 2 index");
-insertNodeAtIndex.appendNodeLast(10);
-insertNodeAtIndex.appendNodeLast(20);
-insertNodeAtIndex.appendNodeLast(30);
-insertNodeAtIndex.appendNodeLast(40);
-insertNodeAtIndex.appendNodeLast(50);
-insertNodeAtIndex.appendNodeLast(60);
-console.log(insertNodeAtIndex.insertValueAtIndex(25,2));
-insertNodeAtIndex.getValue();
-console.log("size of insertNodeAtIndex ",insertNodeAtIndex.getSize())
+// const insertNodeAtIndex = new LinkedList();
+// console.log("insert 25 at 2 index");
+// insertNodeAtIndex.appendNodeLast(10);
+// insertNodeAtIndex.appendNodeLast(20);
+// insertNodeAtIndex.appendNodeLast(30);
+// insertNodeAtIndex.appendNodeLast(40);
+// insertNodeAtIndex.appendNodeLast(50);
+// insertNodeAtIndex.appendNodeLast(60);
+// console.log(insertNodeAtIndex.insertValueAtIndex(25, 2));
+// insertNodeAtIndex.getValue();
+// console.log("size of insertNodeAtIndex ", insertNodeAtIndex.getSize())
 
 // Remove A Node at a given Index in the list :-
-console.log(insertNodeAtIndex.removeNodeFromGivenIndex(-1));
-console.log(insertNodeAtIndex.removeNodeFromGivenIndex(0));
-console.log(insertNodeAtIndex.removeNodeFromGivenIndex(7));
-console.log(insertNodeAtIndex.removeNodeFromGivenIndex(1));
-insertNodeAtIndex.getValue();
-console.log("reversing")
-// reverse
-insertNodeAtIndex.reverse();
-insertNodeAtIndex.getValue()
+// console.log(insertNodeAtIndex.removeNodeFromGivenIndex(-1));
+// console.log(insertNodeAtIndex.removeNodeFromGivenIndex(0));
+// console.log(insertNodeAtIndex.removeNodeFromGivenIndex(7));
+// console.log(insertNodeAtIndex.removeNodeFromGivenIndex(1));
+// insertNodeAtIndex.getValue();
+// console.log("reversing")
+// // reverse
+// insertNodeAtIndex.reverse();
+// insertNodeAtIndex.getValue()
+
+module.exports = LinkedList;
